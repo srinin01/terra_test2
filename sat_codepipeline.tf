@@ -79,7 +79,7 @@ resource "aws_codepipeline" "sat_codepipeline" {
         ConnectionArn = aws_codestarconnections_connection.github.arn
         FullRepositoryId = "srinin01/test-repo"
         BranchName = "main"
-        DetechChanges = true
+        DetectChanges = "true"
       }
     }
   }
