@@ -62,7 +62,7 @@ resource "aws_codepipeline" "sat_codepipeline" {
   name     = "sat_codepipeline"
   role_arn = aws_iam_role.sat_role.arn #create this role
   artifact_store {
-    location = aws_s3_bucket.sat_role.bucket
+    location = aws_s3_bucket.sat_bucket.bucket
     type     = "S3"
   }
   state {
@@ -105,7 +105,7 @@ resource "aws_codepipeline_webhook" "sat_sat" {
   name = "webhook_github_sat"
   authentication  = "GITHUB_HMAC"
   target_action   = "Source"
-  target_pipeline = aws_codepipeline.sat_codepipeline.sat_codepipeline
+  target_pipeline = aws_codepipeline.sat_codepipeline.name
   authentication_configuration {
     secret_token = "1234567890"
   }
