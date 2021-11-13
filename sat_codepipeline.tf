@@ -3,7 +3,7 @@ resource "aws_codestarconnections_connection" "github" {
   provider_type = "GitHub"
 }
 resource "aws_s3_bucket" "sat_bucket" {
-  bucket = "sat_bucket_11_13"
+  bucket = "sat_bucket_11_13_srini"
 }
 resource "aws_iam_role" "sat_role" {
   name               = "sat_role"
