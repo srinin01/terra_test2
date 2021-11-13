@@ -1,3 +1,6 @@
+provider "aws" {
+  region = "us-east-1"
+}
 resource "aws_codestarconnections_connection" "github" {
   name          = "sat_connection"
   provider_type = "GitHub"
@@ -94,6 +97,7 @@ resource "aws_codepipeline" "sat_codepipeline" {
       configuration = {
         ProjectName = "sat_proj"
       }
+      input_artifcats = []
     }
 
   }
