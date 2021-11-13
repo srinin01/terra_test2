@@ -90,8 +90,6 @@ resource "aws_codepipeline" "sat_codepipeline" {
       category = "Build"
       owner = "AWS"
       provider = "CodeBuild"
-      input_artifacts = ["sat_input"]
-      output_artifacts = ["sat_output"]
       version = 1
       configuration = {
         ProjectName = "sat_proj"
