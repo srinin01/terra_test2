@@ -62,7 +62,7 @@ resource "aws_codepipeline" "sat_codepipeline" {
   name     = "sat_codepipeline"
   role_arn = aws_iam_role.sat_role.sat_role.arn #create this role
   artifact_store {
-    location = aws_s3_bucket.sat_role.bucket
+    location = aws_s3_bucket.sat_role.sat_role.bucket
     type     = "S3"
   }
   state {
