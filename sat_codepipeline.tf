@@ -7,9 +7,9 @@ resource "aws_s3_bucket" "sat_bucket" {
   acl = "private"
 }
 resource "aws_iam_role" "sat_role" {
-  name               = "sat_role"
+  name = "sat_role"
   assume_role_policy = <<EOF
-    {
+  {
         "Version": "2012-10-17",
         "Statement": [
             {
@@ -21,7 +21,7 @@ resource "aws_iam_role" "sat_role" {
             }
         ]
     }
-    EOF
+  EOF
 }
 resource "aws_iam_role_policy" "sat_policy" {
   name = "sat_policy"
