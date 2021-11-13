@@ -97,7 +97,7 @@ resource "aws_codepipeline" "sat_codepipeline" {
       configuration = {
         ProjectName = "sat_proj"
       }
-      input_artifcats = []
+      input_artifacts = []
     }
 
   }
