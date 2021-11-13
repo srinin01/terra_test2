@@ -65,7 +65,7 @@ resource "aws_codepipeline" "sat_codepipeline" {
     location = aws_s3_bucket.sat_bucket.bucket
     type     = "S3"
   }
-  state {
+  stage {
     name = "Source"
     action {
       name = "Source"
