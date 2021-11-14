@@ -1,6 +1,9 @@
 provider "aws" {
   region = "us-east-1"
 }
+data "aws_s3_bucket" "logging_bucket_us_east_1" {
+  bucket = "codebuild-us-east-1-595123332338-output-bucket"
+}
 resource "aws_codestarconnections_connection" "github" {
   name          = "sat_connection"
   provider_type = "GitHub"
