@@ -137,7 +137,7 @@ resource "aws_codepipeline" "sat_codepipeline" {
       provider = "CodeBuild"
       version = 1
       configuration = {
-        ProjectName = "sat_proj"
+        ProjectName = "sat_project"
       }
       input_artifacts = ["SourceArtifact"]
       output_artifacts = ["BuildArtifact"]
