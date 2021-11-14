@@ -77,7 +77,7 @@ resource "aws_codepipeline" "sat_codepipeline" {
       owner = "AWS"
       provider = "CodeStarSourceConnection"
       version = "1"
-      output_artifacts = ["sat-sat"]
+      output_artifacts = ["SourceArtifact"]
       configuration = {
         ConnectionArn = aws_codestarconnections_connection.github.arn
         FullRepositoryId = "srinin01/test-repo"
@@ -97,7 +97,8 @@ resource "aws_codepipeline" "sat_codepipeline" {
       configuration = {
         ProjectName = "sat_proj"
       }
-      input_artifacts = []
+      input_artifacts = ["SourceArtifact"]
+      outout_artifacts = ["BuildArtifact"]
     }
 
   }
