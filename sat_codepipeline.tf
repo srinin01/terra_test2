@@ -98,7 +98,7 @@ resource "aws_codepipeline" "sat_codepipeline" {
         ProjectName = "sat_proj"
       }
       input_artifacts = ["SourceArtifact"]
-      outout_artifacts = ["BuildArtifact"]
+      output_artifacts = ["BuildArtifact"]
     }
 
   }
