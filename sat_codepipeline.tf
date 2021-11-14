@@ -159,7 +159,7 @@ resource "aws_codepipeline_webhook" "codepipeline_webhook" {
     json_path    = "$.ref"
     match_equals = "refs/heads/{Branch}"
   }
-# }
+}
 # resource "github_repository_webhook" "github_hook" {
 #   repository = "terra_test2"
 
