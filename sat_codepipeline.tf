@@ -119,7 +119,7 @@ resource "aws_codepipeline_webhook" "codepipeline_webhook" {
   }
 }
 resource "github_repository_webhook" "github_hook" {
-  repository = "srinin01/terra_test2"
+  repository = "terra_test2"
 
   configuration {
     url          = aws_codepipeline_webhook.codepipeline_webhook.url
