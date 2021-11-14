@@ -33,6 +33,10 @@ resource "aws_codebuild_project" "sat_proj" {
 resource "aws_s3_bucket" "sat_bucket" {
   bucket = "sat-bucket-11-13-srini"
   acl = "private"
+  logging {
+    target_bucket = data.aws_s3_bucket.logging_bucket_us_east_1.id
+    target_prefix = "sam-codepipeline"
+  }
 }
 resource "aws_iam_role" "sat_role" {
   name = "sat_role"
