@@ -159,19 +159,19 @@ resource "aws_codepipeline_webhook" "codepipeline_webhook" {
     json_path    = "$.ref"
     match_equals = "refs/heads/{Branch}"
   }
-}
-resource "github_repository_webhook" "github_hook" {
-  repository = "terra_test2"
+# }
+# resource "github_repository_webhook" "github_hook" {
+#   repository = "terra_test2"
 
-  configuration {
-    url          = aws_codepipeline_webhook.codepipeline_webhook.url
-    content_type = "json"
-    insecure_ssl = false
-    secret       = random_string.github_secret.result
-  }
+#   configuration {
+#     url          = aws_codepipeline_webhook.codepipeline_webhook.url
+#     content_type = "json"
+#     insecure_ssl = false
+#     secret       = random_string.github_secret.result
+#   }
 
-  events = ["push"]
-}
+#   events = ["push"]
+# }
 resource "random_string" "github_secret" {
   length  = 99
   special = false
