@@ -5,6 +5,31 @@ resource "aws_codestarconnections_connection" "github" {
   name          = "sat_connection"
   provider_type = "GitHub"
 }
+data "template_file" "buildspec" {
+  template = "${file("buildspec.yml")}"
+}
+
+resource "aws_codebuild_project" "sat_proj" {
+  name = "sat_project"
+  artifacts {
+    type = "NO_ARTIFACTS"
+  }
+  environment {
+    compute_type                = "BUILD_GENERAL1_SMALL"
+    image                       = "aws/codebuild/amazonlinux2-x86_64-standard:2.0"
+    image_pull_credentials_type = "CODEBUILD"
+    privileged_mode             = false
+    type                        = "LINUX_CONTAINER"
+  }
+   source {
+    buildspec           = data.template_file.buildspec.rendered
+    git_clone_depth     = 0
+    insecure_ssl        = false
+    report_build_status = false
+    type                = "CODEPIPELINE"
+  }
+  
+}
 resource "aws_s3_bucket" "sat_bucket" {
   bucket = "sat-bucket-11-13-srini"
   acl = "private"
