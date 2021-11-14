@@ -12,7 +12,7 @@ data "template_file" "buildspec" {
 resource "aws_codebuild_project" "sat_proj" {
   name = "sat_project"
   artifacts {
-    type = "NO_ARTIFACTS"
+    type = "CODEPIPELINE"
   }
   environment {
     compute_type                = "BUILD_GENERAL1_SMALL"
