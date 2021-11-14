@@ -31,7 +31,7 @@ resource "aws_codebuild_project" "sat_proj" {
     report_build_status = false
     type                = "CODEPIPELINE"
   }
-  service_role = aws_iam_role.sat_role.arn
+  service_role = aws_iam_role.sat_build_role.arn
 }
 resource "aws_s3_bucket" "sat_bucket" {
   bucket = "sat-bucket-11-13-srini"
@@ -110,7 +110,41 @@ resource "aws_iam_role_policy" "sat_policy" {
 }
 EOF
 }
+resource "aws_iam_role_policy" "sat_build_policy" {
+  name = "sat_build_policy"
+  role = aws_iam_role.sat_build_role.id
 
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect":"Allow",
+      "Action": [
+        "s3:*"
+      ],
+      "Resource": [
+        "${aws_s3_bucket.sat_bucket.arn}",
+        "${aws_s3_bucket.sat_bucket.arn}/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "codebuild:BatchGetBuilds",
+        "codebuild:StartBuild"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "codestar-connections:UseConnection",
+      "Resource": "${aws_codestarconnections_connection.github.arn}"
+    }
+  ]
+}
+EOF
+}
 resource "aws_codepipeline" "sat_codepipeline" {
   name     = "sat_codepipeline"
   role_arn = aws_iam_role.sat_role.arn #create this role
