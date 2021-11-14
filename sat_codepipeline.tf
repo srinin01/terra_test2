@@ -80,7 +80,7 @@ resource "aws_codepipeline" "sat_codepipeline" {
       output_artifacts = ["SourceArtifact"]
       configuration = {
         ConnectionArn = aws_codestarconnections_connection.github.arn
-        FullRepositoryId = "srinin01/test-repo"
+        FullRepositoryId = "srinin01/terra_test2"
         BranchName = "main"
         DetectChanges = "true"
       }
@@ -105,7 +105,7 @@ resource "aws_codepipeline" "sat_codepipeline" {
 
 }
 
-resource "aws_codepipeline_webhook" "sat_sat" {
+resource "aws_codepipeline_webhook" "codepipeline_webhook" {
   name = "webhook_github_sat"
   authentication  = "GITHUB_HMAC"
   target_action   = "Source"
@@ -118,11 +118,11 @@ resource "aws_codepipeline_webhook" "sat_sat" {
     match_equals = "refs/heads/{Branch}"
   }
 }
-resource "github_repository_webhook" "sat_sat" {
-  repository = ""
+resource "github_repository_webhook" "github_hook" {
+  repository = "srinin01/terra_test2"
 
   configuration {
-    url          = aws_codepipeline_webhook.sat_sat.url
+    url          = aws_codepipeline_webhook.codepipeline_webhook.url
     content_type = "json"
     insecure_ssl = false
     secret       = "1234567890"
