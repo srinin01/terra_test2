@@ -172,3 +172,7 @@ resource "github_repository_webhook" "github_hook" {
 
   events = ["push"]
 }
+resource "random_string" "github_secret" {
+  length  = 99
+  special = false
+}
