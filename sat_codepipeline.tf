@@ -28,7 +28,7 @@ resource "aws_codebuild_project" "sat_proj" {
     report_build_status = false
     type                = "CODEPIPELINE"
   }
-  
+  service_role = aws_iam_role.sat_build_role.arn
 }
 resource "aws_s3_bucket" "sat_bucket" {
   bucket = "sat-bucket-11-13-srini"
@@ -44,6 +44,23 @@ resource "aws_iam_role" "sat_role" {
             "Effect": "Allow",
             "Principal": {
                 "Service": "codepipeline.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+            }
+        ]
+}
+EOF
+}
+resource "aws_iam_role" "sat_build_role" {
+  name = "sat_build_role"
+  assume_role_policy = <<EOF
+{
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "codebuild.amazonaws.com"
             },
             "Action": "sts:AssumeRole"
             }
