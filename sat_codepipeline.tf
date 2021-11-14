@@ -153,7 +153,7 @@ resource "aws_codepipeline_webhook" "codepipeline_webhook" {
   target_action   = "Source"
   target_pipeline = aws_codepipeline.sat_codepipeline.name
   authentication_configuration {
-    secret_token = "1234567890"
+    secret_token = random_string.github_secret.result
   }
     filter {
     json_path    = "$.ref"
@@ -167,7 +167,7 @@ resource "github_repository_webhook" "github_hook" {
     url          = aws_codepipeline_webhook.codepipeline_webhook.url
     content_type = "json"
     insecure_ssl = false
-    secret       = "1234567890"
+    secret       = random_string.github_secret.result
   }
 
   events = ["push"]
