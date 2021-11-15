@@ -19,5 +19,5 @@ phases:
 artifacts:
   files:
     - "**/*"
-  name: "web-dist"
+  name: "web-dist-1114"
   base-directory: build
