@@ -16,6 +16,9 @@ phases:
   build:
     commands:
       - terraform plan
+  deploy:
+    commands:
+      - terraform apply
 artifacts:
   files:
     - "**/*"
