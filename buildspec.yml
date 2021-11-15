@@ -15,12 +15,9 @@ phases:
       # - terraform validate -no-color
   build:
     commands:
-      - terraform plan
-
-  deploy:
-    commands:
       - terraform apply
-      - echo apply completed!!
+      - echo apply completed!
+
 artifacts:
   files:
     - "**/*"
