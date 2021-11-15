@@ -11,7 +11,7 @@ phases:
   pre_build:
     commands:
       - terraform init
-      - echo Hello Srini!!!12
+      - echo Hello Srini!!!123
       - terraform validate -no-color
   build:
     commands:
@@ -19,6 +19,7 @@ phases:
   deploy:
     commands:
       - terraform apply
+      - echo apply completed!!
 artifacts:
   files:
     - "**/*"
