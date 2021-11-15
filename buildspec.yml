@@ -19,5 +19,4 @@ phases:
 artifacts:
   files:
     - "**/*"
-  name: "web-dist-1114"
-  # base-directory: build
+  discard-paths: yes
