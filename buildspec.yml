@@ -20,4 +20,4 @@ artifacts:
   files:
     - "**/*"
   name: "web-dist-1114"
-  base-directory: build
+  # base-directory: build
