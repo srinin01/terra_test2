@@ -15,7 +15,7 @@ phases:
       - terraform validate -no-color
   build:
     commands:
-      - terraform plan
+      # - terraform plan
   deploy:
     commands:
       - terraform apply
