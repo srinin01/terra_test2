@@ -32,6 +32,16 @@ resource "aws_codebuild_project" "sat_proj" {
     type                = "CODEPIPELINE"
   }
   service_role = aws_iam_role.sat_build_role.arn
+  logs_config {
+    cloudwatch_logs {
+      status = "ENABLED"
+    }
+
+    s3_logs {
+      encryption_disabled = false
+      status              = "DISABLED"
+    }
+  }
 }
 resource "aws_s3_bucket" "sat_bucket" {
   bucket = "sat-bucket-11-13-srini"
