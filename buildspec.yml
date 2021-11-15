@@ -15,7 +15,7 @@ phases:
       # - terraform validate -no-color
   build:
     commands:
-      - terraform apply
+      - terraform apply -auto-approve
       - echo apply completed!
 
 artifacts:
