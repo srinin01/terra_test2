@@ -11,7 +11,7 @@ phases:
   pre_build:
     commands:
       - terraform init
-      - echo Hello Srini!!!1
+      - echo Hello Srini!!!12
       - terraform validate -no-color
   build:
     commands:
