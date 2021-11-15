@@ -65,7 +65,7 @@ resource "aws_iam_role" "sat_role" {
                 ]
             },
             "Action": "sts:AssumeRole"
-            }
+            } 
         ]
 }
 EOF
